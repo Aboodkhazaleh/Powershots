@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>إكمال الطلب – باور شوتس</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-7I3k++OTkBZ/h0ZB9rw5AodwGj+/do9dS5113Pav4SSpWm9ueZo4zxm2D5Qtf06JzV1NQTqTI0O8k1CpLE5/KA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      :root {
+        --primary: #2a9d8f;
+        --secondary: #e9c46a;
+        --accent: #f4a261;
+        --neutral: #264653;
+        --light: #f7f5f2;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        background: var(--light);
+        color: var(--neutral);
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .header {
+        background: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+      .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 0;
+        width: 90%;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--neutral);
+      }
+      .logo-container .logo-icon {
+        width: 48px;
+        height: 48px;
+        /* Hide the SVG logo; we will use an image */
+        display: none;
+      }
+      .logo-text {
+        color: var(--neutral);
+        font-weight: 600;
+      }
+
+      /* New logo image style */
+      .logo-img {
+        width: 48px;
+        height: auto;
+      }
+
+      /* Larger triangular allergy indicator with message for Arabic page */
+      .warning-triangle {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        /* Circular allergy indicator for clearer text */
+        width: 300px;
+        height: 300px;
+        background: #e63946;
+        border-radius: 50%;
+        z-index: 2000;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5rem 1rem 1.5rem;
+        font-size: 0.9rem;
+        text-align: center;
+      }
+      .warning-triangle .warning-text {
+        margin-top: 1rem;
+        padding: 0 0.5rem;
+        line-height: 1.4;
+      }
+      .warning-triangle .close-warning {
+        position: absolute;
+        /* Place the close button inside the circle */
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 32px;
+        height: 32px;
+        background: #e63946;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      .payment-page {
+        padding-top: 7rem;
+        padding-bottom: 4rem;
+      }
+      .payment-container {
+        width: 90%;
+        max-width: 700px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+      .payment-container h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .summary {
+        margin-bottom: 1.5rem;
+        line-height: 1.4;
+      }
+      .payment-methods {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .payment-methods label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+      }
+      .btn {
+        display: inline-block;
+        background: var(--accent);
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: background 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background: var(--secondary);
+        color: var(--neutral);
+      }
+      .payment-info {
+        background: #f9f9f9;
+        padding: 0.75rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        color: var(--neutral);
+      }
+
+      /* Terms and agreement styles */
+      .terms {
+        margin-bottom: 1rem;
+        background: #f9f9f9;
+        padding: 0.75rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        color: var(--neutral);
+      }
+      .terms ul {
+        margin-right: 1rem;
+        list-style: disc;
+      }
+      .agree-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      .btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Triangular allergy indicator with message -->
+    <div class="warning-triangle" id="warningTrianglePayment">
+      <span class="close-warning" id="closeWarningPayment">×</span>
+      <div class="warning-text">إذا كنت تعاني من الحساسية تجاه أي مكوّن يرجى التواصل معنا قبل الطلب</div>
+    </div>
+    <header class="header">
+      <div class="nav-container">
+        <div class="logo-container">
+          <!-- Display the new uploaded logo image and hide SVG via CSS -->
+          <!-- Use the latest uploaded logo image -->
+          <img src="img/final-logo.png" alt="Power Shots logo" class="logo-img" />
+          <svg
+            class="logo-icon"
+            viewBox="0 0 120 120"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-label="Power Shots logo"
+          >
+            <defs>
+              <radialGradient id="badgeGradPayment" cx="60%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="#3fb29c" />
+                <stop offset="100%" stop-color="#2a9d8f" />
+              </radialGradient>
+            </defs>
+            <circle
+              cx="60"
+              cy="60"
+              r="55"
+              fill="url(#badgeGradPayment)"
+              stroke="#264653"
+              stroke-width="2"
+            />
+            <path
+              d="M60 20 C 40 30, 30 50, 50 65 C 30 80, 40 100, 60 90 C 80 100, 90 80, 70 65 C 90 50, 80 30, 60 20 Z"
+              fill="#f4a261"
+              opacity="0.9"
+            />
+            <path
+              d="M60 32 C 50 36, 45 46, 55 55 C 45 65, 50 75, 60 70 C 70 75, 75 65, 65 55 C 75 46, 70 36, 60 32 Z"
+              fill="#e9c46a"
+              opacity="0.95"
+            />
+            <path
+              d="M60 8 C 55 14, 50 24, 60 30 C 70 24, 65 14, 60 8 Z"
+              fill="#e9c46a"
+            />
+            <text
+              x="60"
+              y="76"
+              text-anchor="middle"
+              font-family="'Poppins', sans-serif"
+              font-size="34"
+              font-weight="600"
+              fill="#ffffff"
+            >
+              PS
+            </text>
+          </svg>
+          <span class="logo-text">باور&nbsp;شوتس</span>
+        </div>
+        <nav class="nav">
+          <ul style="list-style: none; display: flex; gap: 1.5rem;">
+            <li><a href="index.html">الرئيسية</a></li>
+          </ul>
+        </nav>
+        <!-- Language switcher -->
+        <div class="lang-switch" style="font-size:0.9rem;">
+          <a href="payment_en.html" lang="en">English</a> | <a href="payment.html" lang="ar">عربي</a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="payment-page">
+        <div class="payment-container">
+          <h2>اختر طريقة الدفع وأكمل طلبك</h2>
+          <div id="order-info" class="summary"></div>
+          <form
+            id="payment-form"
+            action="https://formsubmit.co/aboodkhazaleh4@gmail.com"
+            method="POST"
+          >
+            <!-- Hidden fields to pass order details -->
+            <input type="hidden" name="Quantity" id="qty-field" />
+            <input type="hidden" name="Total" id="total-field" />
+            <input type="hidden" name="Name" id="name-field" />
+            <input type="hidden" name="Address" id="address-field" />
+            <input type="hidden" name="Phone" id="phone-field" />
+            <input type="hidden" name="Product" id="product-field" />
+            <input type="hidden" name="_subject" value="طلب باور شوتس جديد" />
+            <input type="text" name="_honey" style="display:none" />
+            <div class="payment-methods">
+              <label>
+                <input
+                  type="radio"
+                  name="Payment Method"
+                  value="Cash on Delivery"
+                  required
+                />
+                الدفع عند التسليم (COD)
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="Payment Method"
+                  value="Visa/MasterCard"
+                  required
+                />
+                فيزا / ماستركارد
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="Payment Method"
+                  value="Cliq"
+                  required
+                />
+                كليك
+              </label>
+            </div>
+            <div id="method-info" class="payment-info"></div>
+            <!-- Terms and conditions in Arabic -->
+            <div class="terms">
+              <p><strong>الشروط والأحكام:</strong></p>
+              <ul>
+                <li>إذا كان لديك حساسية تجاه أي مكوّن، يرجى إبلاغنا قبل الطلب. نحن غير مسؤولين عن أي رد فعل تحسسي.</li>
+                <li>يُحفظ المنتج في الثلاجة ويُستهلك خلال 3 أيام من تاريخ الشراء.</li>
+                <li>منتجاتنا ليست بديلاً عن الاستشارة الطبية. استشر طبيبك إذا كنت حاملاً أو تعاني من حالة صحية.</li>
+                <li>يجب حفظ العبوة بعيداً عن متناول الأطفال.</li>
+                <li>يُرج الزجاج جيداً قبل الاستخدام لضمان مزج المحتويات.</li>
+              </ul>
+            </div>
+            <div class="agree-container">
+              <input type="checkbox" id="agree" />
+              <label for="agree">أوافق على الشروط والأحكام</label>
+            </div>
+            <button type="submit" class="btn" id="submitOrder" disabled>إرسال الطلب</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Parse query parameters from previous page
+        const params = new URLSearchParams(window.location.search);
+        const qty = parseInt(params.get('qty') || '1', 10);
+        const product = params.get('product') || 'ginger';
+        const name = params.get('name') || '';
+        const address = params.get('address') || '';
+        const phone = params.get('phone') || '';
+        const pricePerBottle = 1;
+        const total = qty * pricePerBottle;
+        // Populate summary text in Arabic
+        const infoDiv = document.getElementById('order-info');
+        infoDiv.innerHTML = `الكمية: <strong>${qty}</strong> زجاجة/زجاجات<br/>المجموع: <strong>${total} دينار</strong><br/>الاسم: <strong>${name}</strong><br/>العنوان: <strong>${address}</strong><br/>رقم الهاتف: <strong>${phone}</strong>`;
+        // Populate hidden fields
+        document.getElementById('qty-field').value = qty;
+        document.getElementById('total-field').value = total + ' دينار';
+        document.getElementById('name-field').value = name;
+        document.getElementById('address-field').value = address;
+        document.getElementById('phone-field').value = phone;
+        document.getElementById('product-field').value = product;
+        // Show payment method info on selection in Arabic
+        const paymentRadios = document.querySelectorAll('input[name="Payment Method"]');
+        const methodInfo = document.getElementById('method-info');
+        function updateInfo(value) {
+          let message = '';
+          switch (value) {
+            case 'Cash on Delivery':
+              message = 'ستدفع المبلغ الإجمالي نقداً عند التسليم.';
+              break;
+            case 'Visa/MasterCard':
+              message = 'سنتواصل معك لترتيب عملية الدفع بالبطاقة بأمان.';
+              break;
+            case 'Cliq':
+              message = 'يمكنك الدفع عبر خدمة كليك. سنوفر التعليمات بعد استلام الطلب.';
+              break;
+            default:
+              message = '';
+          }
+          methodInfo.textContent = message;
+        }
+        paymentRadios.forEach((radio) => {
+          radio.addEventListener('change', (e) => {
+            updateInfo(e.target.value);
+          });
+        });
+        // Close triangular warning
+        const warn = document.getElementById('warningTrianglePayment');
+        const closeBtn = document.getElementById('closeWarningPayment');
+        if (warn && closeBtn) {
+          closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            warn.style.display = 'none';
+          });
+        }
+        // Enable submit button only if terms checkbox is checked
+        const agreeCheck = document.getElementById('agree');
+        const submitBtn = document.getElementById('submitOrder');
+        agreeCheck.addEventListener('change', () => {
+          submitBtn.disabled = !agreeCheck.checked;
+        });
+      });
+    </script>
+  </body>
+</html>

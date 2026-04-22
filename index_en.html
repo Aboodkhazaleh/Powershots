@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Power Shots – Natural Ginger Shots</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-7I3k++OTkBZ/h0ZB9rw5AodwGj+/do9dS5113Pav4SSpWm9ueZo4zxm2D5Qtf06JzV1NQTqTI0O8k1CpLE5/KA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Custom Styles -->
+    <style>
+/*
+ * Stylesheet for the Power Shots website
+ *
+ * This file defines the color palette, typography and layout for the site.
+ */
+
+:root {
+  --primary: #2a9d8f;
+  --secondary: #e9c46a;
+  --accent: #f4a261;
+  --neutral: #264653;
+  --light: #f7f5f2;
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  background: var(--light);
+  color: var(--neutral);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Container utility */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Header and navigation */
+.header {
+  background: #fff;
+  position: fixed;
+  top: 2.5rem; /* push header below warning banner */
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.logo span {
+  color: var(--primary);
+}
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.nav a {
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.nav a:hover {
+  color: var(--primary);
+}
+
+/* Language switcher styling */
+.lang-switch {
+  display: flex;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+}
+.lang-switch a {
+  color: var(--neutral);
+  margin: 0 0.25rem;
+  transition: color 0.3s ease;
+}
+.lang-switch a:hover {
+  color: var(--primary);
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 80vh;
+  padding-top: 6rem; /* space for fixed header */
+  position: relative;
+  overflow: hidden;
+}
+.hero-content {
+  max-width: 600px;
+  z-index: 1;
+}
+.hero h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.75rem 1.7rem;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.btn:hover {
+  background: var(--secondary);
+  color: var(--neutral);
+}
+.btn.secondary {
+  background: var(--primary);
+}
+/* Animated circles in hero */
+.circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float 20s infinite;
+}
+.circle-1 {
+  width: 300px;
+  height: 300px;
+  background: var(--accent);
+  top: 10%;
+  left: -15%;
+}
+.circle-2 {
+  width: 200px;
+  height: 200px;
+  background: var(--secondary);
+  bottom: 15%;
+  right: -10%;
+  animation-delay: -10s;
+}
+.circle-3 {
+  width: 400px;
+  height: 400px;
+  background: var(--primary);
+  top: 50%;
+  right: -25%;
+  animation-delay: -5s;
+}
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-30px) scale(1.1);
+  }
+}
+
+/* Benefits Section */
+.benefits {
+  padding: 4rem 0;
+  background: #fff;
+}
+.benefits h3 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--neutral);
+}
+.benefit-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.benefit-item {
+  background: var(--light);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.benefit-item i {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+.benefit-item h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--neutral);
+}
+.benefit-item p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--neutral);
+}
+.benefit-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Section */
+.product-section {
+  background: var(--light);
+  padding: 4rem 0;
+}
+/* Product grid for two shots side by side */
+.product-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: flex-start;
+  margin-top: 2rem;
+}
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 1s ease both;
+  cursor: pointer; /* make whole card clickable */
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+/* Smaller shot illustration sizes within product cards */
+.product-card .shot-container {
+  margin: 0 auto 0.75rem;
+  width: 60px;
+  height: 120px;
+}
+.product-card .shot {
+  width: 60px;
+  height: 120px;
+}
+.product-card .shot-cap {
+  width: 48px;
+  height: 16px;
+}
+.product-card .logo-overlay {
+  width: 40px;
+  height: 40px;
+}
+.product-card .logo-overlay img {
+  width: 100%;
+  height: 100%;
+}
+.card-content h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--neutral);
+}
+.card-content p {
+  margin-bottom: 1rem;
+  color: var(--neutral);
+  line-height: 1.5;
+}
+.card-content ul {
+  list-style: none;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+.card-content li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  color: var(--neutral);
+}
+.card-content li i {
+  color: var(--primary);
+  margin-right: 0.5rem;
+}
+.price {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Shot illustration */
+.shot-container {
+  position: relative;
+  width: 120px;
+  height: 240px;
+}
+.shot {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 180px;
+  border-radius: 20px 20px 10px 10px;
+  background: linear-gradient(to top, var(--accent) 0%, #fffacd 100%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: bounce 2.5s infinite;
+}
+.shot-cap {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 20px;
+  border-radius: 10px 10px 4px 4px;
+  background: var(--neutral);
+}
+@keyframes bounce {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -15px);
+  }
+}
+
+/* Contact Section */
+.contact-section {
+  background: #fff;
+  padding: 4rem 0;
+}
+.contact-container {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+.contact-section h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.contact-section p {
+  margin-bottom: 2rem;
+  color: var(--neutral);
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (min-width: 600px) {
+  .form-row {
+    flex-direction: row;
+  }
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  resize: vertical;
+}
+.contact-form textarea {
+  min-height: 100px;
+}
+.contact-form button {
+  align-self: center;
+}
+
+/* Footer */
+.footer {
+  background: var(--neutral);
+  color: #fff;
+  padding: 1rem 0;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+.socials a {
+  color: #fff;
+  margin-left: 0.75rem;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+.socials a:hover {
+  color: var(--accent);
+}
+
+/* Logo styling */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--neutral);
+}
+.logo-icon {
+  /* Hide the old SVG logo since we now use an image */
+  display: none;
+}
+.logo-text {
+  font-weight: 600;
+  color: var(--neutral);
+}
+
+/* New logo image style */
+.logo-img {
+  width: 56px;
+  height: auto;
+}
+
+/* Larger triangular allergy indicator with text */
+/* Larger triangular allergy indicator for English page */
+.warning-triangle {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+        /* Circular allergy indicator for clearer text */
+        width: 300px;
+        height: 300px;
+  background: #e63946;
+  /* Use a circle instead of a triangle */
+  border-radius: 50%;
+  z-index: 2000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+        padding: 2.5rem 1rem 1.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.warning-triangle .warning-text {
+  margin-top: 1rem;
+  padding: 0 0.5rem;
+  line-height: 1.4;
+}
+.warning-triangle .close-warning {
+  position: absolute;
+  /* Place the close button inside the circle */
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 32px;
+  height: 32px;
+  background: #e63946;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Animate the product container for a lively feel */
+.product-container {
+  animation: fadeInUp 1s ease both;
+}
+
+  /* Apply subtle fade-in animation to hero content and other sections */
+  .hero-content, .benefit-item, .contact-container {
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards;
+  }
+
+  .hero-content {
+    animation-delay: 0.2s;
+  }
+  .benefit-item {
+    animation-delay: 0.4s;
+  }
+  .contact-container {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Turmeric shot variant */
+.product-animation.turmeric .shot {
+  background: linear-gradient(to top, #f4a261 0%, #ffe4b5 100%);
+}
+/* Overlay logo on bottle */
+.logo-overlay {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.logo-overlay .logo-icon {
+  width: 100%;
+  height: 100%;
+}
+
+/* Contact details styling */
+.contact-details {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: var(--neutral);
+}
+.contact-details i {
+  color: var(--primary);
+}
+.delivery-note {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* Buy button styling */
+.btn.buy {
+  background: var(--secondary);
+  color: var(--neutral);
+}
+.btn.buy:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Utility: adjust scroll offset for anchor links due to fixed header */
+section {
+  scroll-margin-top: 80px;
+}
+    </style>
+  </head>
+  <body>
+    <!-- Triangular allergy warning with text inside -->
+    <div class="warning-triangle" id="warningTriangle">
+      <span class="close-warning" id="closeWarning">×</span>
+      <div class="warning-text">If you have any allergy to any ingredient, please contact us before ordering.</div>
+    </div>
+    <!-- Navigation -->
+    <header class="header">
+      <div class="container nav-container">
+        <div class="logo-container">
+          <!-- Custom logo for Power Shots -->
+          <!-- Replace with user-provided logo image -->
+          <!-- Use the user-provided logo for the header -->
+          <!-- Use the latest uploaded logo image -->
+          <img src="img/final-logo.png" alt="Power Shots logo" class="logo-img" />
+          <!--
+            Enhanced logo
+
+            The new logo keeps the circular badge but adds a layered swirl motif
+            inspired by the curves of ginger root. Three nested swirls form
+            an organic, handcrafted emblem inside the circle. Each path has
+            slightly different curvature and opacity to create depth. The
+            initials “PS” remain centered to anchor the brand name.
+          -->
+          <svg
+            class="logo-icon"
+            width="56"
+            height="56"
+            viewBox="0 0 120 120"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-label="Power Shots logo"
+          >
+            <!--
+              Custom Power Shots logo:
+
+              This vector graphic is more intricate than the previous design. It uses a radial
+              gradient for the outer badge to give depth and a handcrafted feel, three
+              overlapping organic shapes reminiscent of a ginger root to hint at the
+              product’s key ingredient, and a small leaf sprouting from the top to
+              emphasize freshness. The letters “PS” anchor the brand name in the
+              lower half of the badge. All colours come from the site’s palette.
+            -->
+            <defs>
+              <!-- Radial gradient for the outer badge -->
+              <radialGradient id="badgeGrad" cx="60%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="#3fb29c" />
+                <stop offset="100%" stop-color="#2a9d8f" />
+              </radialGradient>
+            </defs>
+            <!-- Outer circle with gradient and subtle stroke -->
+            <circle
+              cx="60"
+              cy="60"
+              r="55"
+              fill="url(#badgeGrad)"
+              stroke="#264653"
+              stroke-width="2"
+            />
+            <!-- Stylized ginger root layers -->
+            <path
+              d="M60 20 C 40 30, 30 50, 50 65 C 30 80, 40 100, 60 90 C 80 100, 90 80, 70 65 C 90 50, 80 30, 60 20 Z"
+              fill="#f4a261"
+              opacity="0.9"
+            />
+            <path
+              d="M60 32 C 50 36, 45 46, 55 55 C 45 65, 50 75, 60 70 C 70 75, 75 65, 65 55 C 75 46, 70 36, 60 32 Z"
+              fill="#e9c46a"
+              opacity="0.95"
+            />
+            <!-- Ginger leaf at the top -->
+            <path
+              d="M60 8 C 55 14, 50 24, 60 30 C 70 24, 65 14, 60 8 Z"
+              fill="#e9c46a"
+            />
+            <!-- Brand initials -->
+            <text
+              x="60"
+              y="76"
+              text-anchor="middle"
+              font-family="'Poppins', sans-serif"
+              font-size="34"
+              font-weight="600"
+              fill="#ffffff"
+            >
+              PS
+            </text>
+          </svg>
+          <span class="logo-text">Power&nbsp;Shots</span>
+        </div>
+        <nav class="nav">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#product">Product</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <!-- Language switcher: allows users to toggle between English and Arabic versions -->
+        <div class="lang-switch">
+          <a href="index_en.html" lang="en">English</a> | <a href="index.html" lang="ar">عربي</a>
+        </div>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container hero-content">
+        <h2>Boost Your Health Naturally</h2>
+        <p>
+          Discover the energizing power of our fresh ginger shots. Made from
+          real ginger root, each shot is packed with natural goodness to help
+          support digestion and immunity.
+        </p>
+        <a href="#product" class="btn">Explore Product</a>
+      </div>
+      <!-- Animated circles background -->
+      <div class="circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+      </div>
+    </section>
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
+      <div class="container">
+        <h3>Why Choose Ginger Shots?</h3>
+        <div class="benefit-grid">
+          <div class="benefit-item">
+            <i class="fa-solid fa-leaf"></i>
+            <h4>All‑Natural Ingredients</h4>
+            <p>
+              Our shots are pressed from fresh ginger root and citrus, with no
+              additives or artificial sweeteners.
+            </p>
+          </div>
+          <div class="benefit-item">
+            <i class="fa-solid fa-stethoscope"></i>
+            <h4>Supports Digestion</h4>
+            <p>
+              Enzymes in ginger may help ease bloating and nausea by promoting
+              natural digestive processes.
+            </p>
+          </div>
+          <div class="benefit-item">
+            <i class="fa-solid fa-shield-heart"></i>
+            <h4>Immune Boost</h4>
+            <p>
+              Ginger’s anti‑inflammatory compounds contribute to immune support
+              and have antiviral and antibacterial properties.
+            </p>
+          </div>
+          <div class="benefit-item">
+            <i class="fa-solid fa-chart-line"></i>
+            <h4>Regulates Sugar</h4>
+            <p>
+              Evidence suggests ginger may improve insulin sensitivity and help
+              maintain stable blood sugar levels.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Product Section -->
+    <section id="product" class="product-section">
+      <div class="container">
+        <div class="product-grid">
+          <!-- Card for ginger shot -->
+          <!-- Each product card has a data attribute to make the whole card clickable -->
+          <div class="product-card" data-product="ginger">
+            <a href="order_en.html?product=ginger" class="shot-link">
+              <div class="shot-container">
+                <div class="shot"></div>
+                <div class="shot-cap"></div>
+                <div class="logo-overlay">
+                  <img src="img/final-logo.png" alt="Power Shots logo" />
+                </div>
+              </div>
+            </a>
+            <div class="card-content">
+              <h3>Healthy Ginger Shot</h3>
+              <p>
+                Each 2‑ounce shot contains pressed ginger root blended with lemon and a touch of honey for a balanced, spicy flavor. Enjoy as a quick pick‑me‑up or add it to your smoothies and juices.
+              </p>
+              <p class="price"><strong>Price:</strong> 1&nbsp;JOD&nbsp;per bottle</p>
+              <ul>
+                <li><i class="fa-solid fa-check"></i> مكونات: زنجبيل، عسل، ليمون</li>
+                <li><i class="fa-solid fa-check"></i> 100% natural juice with no added sugar</li>
+                <li><i class="fa-solid fa-check"></i> Supports digestion and immunity</li>
+                <li><i class="fa-solid fa-check"></i> Convenient 2‑oz size — enjoy chilled</li>
+              </ul>
+              <a href="order_en.html?product=ginger" class="btn buy">Buy&nbsp;Now</a>
+            </div>
+          </div>
+          <!-- Card for turmeric shot -->
+          <div class="product-card" data-product="turmeric">
+            <a href="order_en.html?product=turmeric" class="shot-link">
+              <div class="shot-container">
+                <div class="shot"></div>
+                <div class="shot-cap"></div>
+                <div class="logo-overlay">
+                  <img src="img/final-logo.png" alt="Power Shots logo" />
+                </div>
+              </div>
+            </a>
+            <div class="card-content">
+              <h3>Golden Ginger &amp; Turmeric Shot</h3>
+              <p>
+                This golden shot combines fresh ginger, turmeric, lemon and raw honey for a warming, earthy taste. Turmeric’s natural anti‑inflammatory compounds and antioxidants complement ginger’s digestive benefits.
+              </p>
+              <p class="price"><strong>Price:</strong> 1&nbsp;JOD&nbsp;per bottle</p>
+              <ul>
+                <li><i class="fa-solid fa-check"></i> مكونات: زنجبيل، كركم، ليمون، عسل</li>
+                <li><i class="fa-solid fa-check"></i> Anti‑inflammatory and antioxidant blend</li>
+                <li><i class="fa-solid fa-check"></i> No added sugar or preservatives</li>
+                <li><i class="fa-solid fa-check"></i> Strengthens immunity and supports digestion</li>
+              </ul>
+              <a href="order_en.html?product=turmeric" class="btn buy">Buy&nbsp;Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="container contact-container">
+        <h3>Get in Touch</h3>
+        <p>
+          Interested in stocking our shots or placing a bulk order? Fill in the
+          form below and we’ll get back to you soon.
+        </p>
+        <p class="contact-details">
+          📞 00962775660296&nbsp;&nbsp;|&nbsp;&nbsp;📍 Amman
+        </p>
+        <p class="delivery-note">
+          Delivery available to all governorates across Jordan.
+        </p>
+        <form
+          class="contact-form"
+          action="https://formsubmit.co/aboodkhazaleh4@gmail.com"
+          method="POST"
+        >
+          <!-- hidden fields for FormSubmit to set email subject -->
+          <input type="hidden" name="_subject" value="New Power Shots Inquiry" />
+          <!-- ensure spam bots are blocked by adding a honeypot field (hidden from users) -->
+          <input type="text" name="_honey" style="display:none" />
+          <div class="form-row">
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+          </div>
+          <textarea
+            name="message"
+            rows="5"
+            placeholder="Tell us how we can help you"
+            required
+          ></textarea>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-container">
+        <p>&copy; <span id="year"></span> Power Shots. All rights reserved.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // script.js
+      // Simple JavaScript to enhance the Power Shots website
+      document.addEventListener('DOMContentLoaded', () => {
+        const yearSpan = document.getElementById('year');
+        if (yearSpan) {
+          yearSpan.textContent = new Date().getFullYear().toString();
+        }
+
+        // The contact form is processed by formsubmit.co directly, so no client-side submission handler is required.
+
+        // Handle closing of the triangular warning indicator
+        const warningTriangle = document.getElementById('warningTriangle');
+        const closeWarning = document.getElementById('closeWarning');
+        if (warningTriangle && closeWarning) {
+          closeWarning.addEventListener('click', (e) => {
+            e.stopPropagation();
+            warningTriangle.style.display = 'none';
+          });
+        }
+
+        // Make the entire product card clickable based on its data-product attribute
+        const cards = document.querySelectorAll('.product-card');
+        cards.forEach((card) => {
+          const product = card.dataset.product;
+          if (product) {
+            card.addEventListener('click', (ev) => {
+              // Prevent interfering when clicking on links or buttons inside the card
+              const target = ev.target;
+              if (target.closest('a')) {
+                return;
+              }
+              window.location.href = `order_en.html?product=${encodeURIComponent(product)}`;
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

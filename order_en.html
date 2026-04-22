@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<!-- English version of the order page -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Power Shots</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-7I3k++OTkBZ/h0ZB9rw5AodwGj+/do9dS5113Pav4SSpWm9ueZo4zxm2D5Qtf06JzV1NQTqTI0O8k1CpLE5/KA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* Shared variables */
+      :root {
+        --primary: #2a9d8f;
+        --secondary: #e9c46a;
+        --accent: #f4a261;
+        --neutral: #264653;
+        --light: #f7f5f2;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        background: var(--light);
+        color: var(--neutral);
+        overflow-x: hidden;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      /* Bigger triangular allergy indicator with message */
+      .warning-triangle {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        /* Circular allergy indicator for clearer text */
+        width: 300px;
+        height: 300px;
+        background: #e63946;
+        border-radius: 50%;
+        z-index: 2000;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5rem 1rem 1.5rem;
+        font-size: 0.9rem;
+        text-align: center;
+      }
+      .warning-triangle .warning-text {
+        margin-top: 1rem;
+        padding: 0 0.5rem;
+        line-height: 1.4;
+      }
+      .warning-triangle .close-warning {
+        position: absolute;
+        /* Place the close button inside the circle */
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 32px;
+        height: 32px;
+        background: #e63946;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      /* Header */
+      .header {
+        background: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+      .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 0;
+        width: 90%;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--neutral);
+      }
+      .logo-container .logo-icon {
+        display: none;
+      }
+      .logo-img {
+        width: 48px;
+        height: auto;
+      }
+      .logo-text {
+        color: var(--neutral);
+        font-weight: 600;
+      }
+      /* Language switcher styling */
+      .lang-switch {
+        display: flex;
+        gap: 0.25rem;
+        font-size: 0.9rem;
+      }
+      .lang-switch a {
+        color: var(--neutral);
+        margin: 0 0.25rem;
+        transition: color 0.3s ease;
+      }
+      .lang-switch a:hover {
+        color: var(--primary);
+      }
+      /* Order page layout */
+      .order-page {
+        padding-top: 7rem;
+        padding-bottom: 4rem;
+      }
+      .order-container {
+        width: 90%;
+        max-width: 600px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
+      .order-container h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--neutral);
+      }
+      .order-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+      .order-form label {
+        text-align: left;
+        font-weight: 500;
+        color: var(--neutral);
+      }
+      .order-form input[type='number'] {
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1rem;
+      }
+      .btn {
+        display: inline-block;
+        background: var(--accent);
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: background 0.3s ease;
+      }
+      .btn.buy {
+        background: var(--secondary);
+        color: var(--neutral);
+      }
+      .btn.buy:hover {
+        background: var(--accent);
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Triangular allergy warning with message -->
+    <div class="warning-triangle" id="warningTriangleOrder">
+      <span class="close-warning" id="closeWarningOrder">×</span>
+      <div class="warning-text">If you have any allergy to any ingredient, please contact us before ordering.</div>
+    </div>
+    <header class="header">
+      <div class="nav-container">
+        <div class="logo-container">
+          <!-- Use the latest uploaded logo image -->
+          <img src="img/final-logo.png" alt="Power Shots logo" class="logo-img" />
+          <!-- Keep SVG hidden but available for semantics -->
+          <svg
+            class="logo-icon"
+            viewBox="0 0 120 120"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-label="Power Shots logo"
+          >
+            <defs>
+              <radialGradient id="badgeGradOrderEn" cx="60%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="#3fb29c" />
+                <stop offset="100%" stop-color="#2a9d8f" />
+              </radialGradient>
+            </defs>
+            <circle
+              cx="60"
+              cy="60"
+              r="55"
+              fill="url(#badgeGradOrderEn)"
+              stroke="#264653"
+              stroke-width="2"
+            />
+            <path
+              d="M60 20 C 40 30, 30 50, 50 65 C 30 80, 40 100, 60 90 C 80 100, 90 80, 70 65 C 90 50, 80 30, 60 20 Z"
+              fill="#f4a261"
+              opacity="0.9"
+            />
+            <path
+              d="M60 32 C 50 36, 45 46, 55 55 C 45 65, 50 75, 60 70 C 70 75, 75 65, 65 55 C 75 46, 70 36, 60 32 Z"
+              fill="#e9c46a"
+              opacity="0.95"
+            />
+            <path
+              d="M60 8 C 55 14, 50 24, 60 30 C 70 24, 65 14, 60 8 Z"
+              fill="#e9c46a"
+            />
+            <text
+              x="60"
+              y="76"
+              text-anchor="middle"
+              font-family="'Poppins', sans-serif"
+              font-size="34"
+              font-weight="600"
+              fill="#ffffff"
+            >
+              PS
+            </text>
+          </svg>
+          <span class="logo-text">Power&nbsp;Shots</span>
+        </div>
+        <nav class="nav">
+          <ul style="list-style: none; display: flex; gap: 1.5rem;">
+            <li><a href="index_en.html">Home</a></li>
+          </ul>
+        </nav>
+        <!-- Language switcher -->
+        <div class="lang-switch">
+          <a href="order_en.html" lang="en">English</a> | <a href="order.html" lang="ar">عربي</a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="order-page">
+        <div class="order-container">
+          <h2 id="order-title">Order Your Shot</h2>
+          <div id="order-preview" class="product-preview" style="margin-bottom: 1rem;">
+            <div class="shot-container" id="orderShotContainer">
+              <div class="shot"></div>
+              <div class="shot-cap"></div>
+              <div class="logo-overlay">
+                <img src="img/final-logo.png" alt="Power Shots logo" />
+              </div>
+            </div>
+          </div>
+          <p style="margin-bottom: 1rem;"><strong>Price per bottle:</strong> 1 JOD</p>
+          <form class="order-form" id="order-form">
+            <label for="quantity">Quantity (bottles)</label>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              min="1"
+              max="100"
+              value="1"
+              required
+            />
+            <button type="submit" class="btn buy">Next</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <script>
+      // JavaScript for English order page: handle product preview and forward user to details page
+      document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const product = params.get('product') || 'ginger';
+        const shotContainer = document.getElementById('orderShotContainer');
+        const titleElem = document.getElementById('order-title');
+        if (product === 'turmeric') {
+          shotContainer.classList.add('turmeric');
+          if (titleElem) titleElem.textContent = 'Order Your Golden Ginger & Turmeric Shot';
+        } else {
+          if (titleElem) titleElem.textContent = 'Order Your Healthy Ginger Shot';
+        }
+        // Close warning triangle
+        const warn = document.getElementById('warningTriangleOrder');
+        const closeBtn = document.getElementById('closeWarningOrder');
+        if (warn && closeBtn) {
+          closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            warn.style.display = 'none';
+          });
+        }
+        // Handle form submission to carry quantity & product to details
+        const form = document.getElementById('order-form');
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const qty = document.getElementById('quantity').value;
+          const nextUrl = `details_en.html?qty=${encodeURIComponent(qty)}&product=${encodeURIComponent(product)}`;
+          window.location.href = nextUrl;
+        });
+      });
+    </script>
+  </body>
+</html>

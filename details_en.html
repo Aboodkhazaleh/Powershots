@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<!-- English version of the details page -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enter Your Details – Power Shots</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-7I3k++OTkBZ/h0ZB9rw5AodwGj+/do9dS5113Pav4SSpWm9ueZo4zxm2D5Qtf06JzV1NQTqTI0O8k1CpLE5/KA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* Shared variables */
+      :root {
+        --primary: #2a9d8f;
+        --secondary: #e9c46a;
+        --accent: #f4a261;
+        --neutral: #264653;
+        --light: #f7f5f2;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        background: var(--light);
+        color: var(--neutral);
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      /* Header styling */
+      .header {
+        background: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+      .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 0;
+        width: 90%;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--neutral);
+      }
+      .logo-container .logo-icon {
+        width: 48px;
+        height: 48px;
+        display: none;
+      }
+      .logo-img {
+        width: 48px;
+        height: auto;
+      }
+      .logo-text {
+        color: var(--neutral);
+        font-weight: 600;
+      }
+      /* Language switcher */
+      .lang-switch {
+        display: flex;
+        gap: 0.25rem;
+        font-size: 0.9rem;
+      }
+      .lang-switch a {
+        color: var(--neutral);
+        margin: 0 0.25rem;
+        transition: color 0.3s ease;
+      }
+      .lang-switch a:hover {
+        color: var(--primary);
+      }
+      /* Bigger triangular allergy indicator */
+      .warning-triangle {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        /* Circular allergy indicator for clearer text */
+        width: 300px;
+        height: 300px;
+        background: #e63946;
+        border-radius: 50%;
+        z-index: 2000;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5rem 1rem 1.5rem;
+        font-size: 0.9rem;
+        text-align: center;
+      }
+      .warning-triangle .warning-text {
+        margin-top: 1rem;
+        padding: 0 0.5rem;
+        line-height: 1.4;
+      }
+      .warning-triangle .close-warning {
+        position: absolute;
+        /* Place the close button inside the circle */
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 32px;
+        height: 32px;
+        background: #e63946;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      /* Main content */
+      .details-page {
+        padding-top: 7rem;
+        padding-bottom: 4rem;
+      }
+      .details-container {
+        width: 90%;
+        max-width: 650px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+      .details-container h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        color: var(--neutral);
+      }
+      .details-container p {
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .details-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .details-form label {
+        font-weight: 500;
+      }
+      .details-form input,
+      .details-form textarea {
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1rem;
+        width: 100%;
+      }
+      .btn {
+        display: inline-block;
+        background: var(--accent);
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: background 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background: var(--secondary);
+        color: var(--neutral);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Bigger triangular allergy warning -->
+    <div class="warning-triangle" id="warningTriangleDetails">
+      <span class="close-warning" id="closeWarningDetails">×</span>
+      <div class="warning-text">If you have any allergy to any ingredient, please contact us before ordering.</div>
+    </div>
+    <header class="header">
+      <div class="nav-container">
+        <div class="logo-container">
+          <!-- Use the latest uploaded logo image -->
+          <img src="img/final-logo.png" alt="Power Shots logo" class="logo-img" />
+          <svg
+            class="logo-icon"
+            viewBox="0 0 120 120"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-label="Power Shots logo"
+          >
+            <defs>
+              <radialGradient id="badgeGradDetailsEn" cx="60%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="#3fb29c" />
+                <stop offset="100%" stop-color="#2a9d8f" />
+              </radialGradient>
+            </defs>
+            <circle
+              cx="60"
+              cy="60"
+              r="55"
+              fill="url(#badgeGradDetailsEn)"
+              stroke="#264653"
+              stroke-width="2"
+            />
+            <path
+              d="M60 20 C 40 30, 30 50, 50 65 C 30 80, 40 100, 60 90 C 80 100, 90 80, 70 65 C 90 50, 80 30, 60 20 Z"
+              fill="#f4a261"
+              opacity="0.9"
+            />
+            <path
+              d="M60 32 C 50 36, 45 46, 55 55 C 45 65, 50 75, 60 70 C 70 75, 75 65, 65 55 C 75 46, 70 36, 60 32 Z"
+              fill="#e9c46a"
+              opacity="0.95"
+            />
+            <path
+              d="M60 8 C 55 14, 50 24, 60 30 C 70 24, 65 14, 60 8 Z"
+              fill="#e9c46a"
+            />
+            <text
+              x="60"
+              y="76"
+              text-anchor="middle"
+              font-family="'Poppins', sans-serif"
+              font-size="34"
+              font-weight="600"
+              fill="#ffffff"
+            >
+              PS
+            </text>
+          </svg>
+          <span class="logo-text">Power&nbsp;Shots</span>
+        </div>
+        <nav class="nav">
+          <ul style="list-style: none; display: flex; gap: 1.5rem;">
+            <li><a href="index_en.html">Home</a></li>
+          </ul>
+        </nav>
+        <!-- Language switcher -->
+        <div class="lang-switch">
+          <a href="details_en.html" lang="en">English</a> | <a href="details.html" lang="ar">عربي</a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="details-page">
+        <div class="details-container">
+          <h2>Enter your details</h2>
+          <p id="order-summary"></p>
+          <form id="details-form" class="details-form">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+            <label for="address">Address</label>
+            <textarea id="address" name="address" rows="2" required></textarea>
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" required />
+            <button type="submit" class="btn">Next</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <script>
+      // Parse query parameters, display order summary, handle form submission, and close warning triangle
+      document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const qty = parseInt(params.get('qty') || '1', 10);
+        const product = params.get('product') || 'ginger';
+        const orderSummary = document.getElementById('order-summary');
+        const pricePerBottle = 1;
+        const total = qty * pricePerBottle;
+        if (orderSummary) {
+          orderSummary.textContent = `Quantity: ${qty} bottle(s) – Total: ${total} JOD`;
+        }
+        // Close warning triangle
+        const warn = document.getElementById('warningTriangleDetails');
+        const closeBtn = document.getElementById('closeWarningDetails');
+        if (warn && closeBtn) {
+          closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            warn.style.display = 'none';
+          });
+        }
+        // Handle submission; include product param
+        const form = document.getElementById('details-form');
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const nameVal = document.getElementById('name').value.trim();
+          const addressVal = document.getElementById('address').value.trim();
+          const phoneVal = document.getElementById('phone').value.trim();
+          const paramsStr = new URLSearchParams({
+            qty: qty,
+            product: product,
+            name: nameVal,
+            address: addressVal,
+            phone: phoneVal,
+          }).toString();
+          window.location.href = `payment_en.html?${paramsStr}`;
+        });
+      });
+    </script>
+  </body>
+</html>
