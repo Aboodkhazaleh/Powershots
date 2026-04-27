@@ -193,7 +193,41 @@
         background: var(--secondary);
         color: var(--neutral);
       }
-    </style>
+    /* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  .warning-triangle {
+    width: 150px;
+    height: 150px;
+    padding: 1rem 0.5rem;
+    font-size: 0.75rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo-container {
+    margin-bottom: 0.5rem;
+  }
+  .nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .lang-switch {
+    margin-top: 0.5rem;
+  }
+  .hero h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .hero p {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+}
+</style>
   </head>
   <body>
     <!-- Bigger triangular allergy warning -->
