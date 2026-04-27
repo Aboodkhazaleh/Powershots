@@ -616,7 +616,37 @@ img {
 section {
   scroll-margin-top: 80px;
 }
-    </style>
+    /* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  /* Shrink and reposition the allergy indicator on mobile */
+  .warning-triangle {
+    width: 150px;
+    height: 150px;
+    padding: 1rem 0.5rem;
+    font-size: 0.75rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  /* Remove extra top offset for the header when the warning is smaller */
+  .header {
+    top: 0;
+  }
+  /* Allow navigation items to wrap and reduce spacing */
+  .nav ul {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  /* Decrease hero heading and paragraph sizes for better fit */
+  .hero h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .hero p {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+}
+</style>
   </head>
 <body>
     <!-- Triangular allergy warning with message -->
